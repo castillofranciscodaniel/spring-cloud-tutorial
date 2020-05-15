@@ -5,9 +5,12 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import com.springboot.app.commons.models.util.DateAudit;
 
@@ -29,7 +32,7 @@ public class User extends DateAudit implements Serializable {
 	private String password;
 	
 	@Column(unique = true, length = 100)
-	private String email;
+	private String mail;
 	
 	private String name;
 	
@@ -38,8 +41,8 @@ public class User extends DateAudit implements Serializable {
 	private Boolean enabled;
 
 	@ManyToMany
-	// @JoinTable(uniqueConstraints = @UniqueConstraint(columnNames = { "user_id",
-	// "roles_id" }))
+	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"), 
+	uniqueConstraints = @UniqueConstraint(columnNames = { "user_id", "role_id" }))
 	private Set<Role> roles;
 
 	@OneToOne

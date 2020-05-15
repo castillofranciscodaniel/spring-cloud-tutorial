@@ -8,9 +8,11 @@ import javax.persistence.Table;
 
 import com.springboot.app.commons.models.Model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "states_user")
 public class StateUser extends Model implements Serializable

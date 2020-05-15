@@ -12,4 +12,6 @@ import com.springboot.app.users.models.User;
  */
 @Repository
 public interface UsersRepository extends JpaRepository<User, Long>, UsersRepositoryCustom {
+
+	User findByUsername(String username);
 }
