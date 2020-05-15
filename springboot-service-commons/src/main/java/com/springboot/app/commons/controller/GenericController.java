@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.springboot.app.commons.models.Model;
+import com.springboot.app.commons.audit.entity.models.Model;
 import com.springboot.app.commons.models.util.ErrorBody;
 import com.springboot.app.commons.service.GenericService;
 import com.springboot.app.commons.service.ResourceNotFoundException;

@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.springboot.app.commons.models.Model;
+import com.springboot.app.commons.audit.entity.models.Model;
 
 public abstract class GenericServiceImpl<T extends Model> implements GenericService<T> {
 

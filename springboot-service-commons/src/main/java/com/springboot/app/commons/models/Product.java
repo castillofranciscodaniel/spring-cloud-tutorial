@@ -8,7 +8,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.springboot.app.commons.models.util.DateAudit;
+import com.springboot.app.commons.audit.entity.models.DateAudit;
 
 import lombok.Getter;
 import lombok.Setter;

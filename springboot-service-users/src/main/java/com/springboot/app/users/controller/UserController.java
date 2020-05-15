@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.app.commons.controller.GenericController;
-import com.springboot.app.users.models.User;
+import com.springboot.app.commons.user.models.User;
 import com.springboot.app.users.service.UserService;
 
 @RestController
@@ -18,6 +18,5 @@ public class UserController extends GenericController<User> {
 		super(userService);
 		this.userService = userService;
 	}
-
 
 }

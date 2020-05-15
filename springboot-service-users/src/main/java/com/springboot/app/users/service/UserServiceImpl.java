@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springboot.app.commons.service.GenericServiceImpl;
-import com.springboot.app.users.models.User;
+import com.springboot.app.commons.user.models.User;
 import com.springboot.app.users.repository.UsersRepository;
 
 @Service

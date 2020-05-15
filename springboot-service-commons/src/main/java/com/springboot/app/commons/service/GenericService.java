@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.springboot.app.commons.models.Model;
+import com.springboot.app.commons.audit.entity.models.Model;
 
 public interface GenericService<T extends Model> {
 

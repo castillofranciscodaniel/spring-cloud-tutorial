@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.springboot.app.commons.audit.entity.models.Model;
+
 import lombok.Getter;
 import lombok.Setter;
 
