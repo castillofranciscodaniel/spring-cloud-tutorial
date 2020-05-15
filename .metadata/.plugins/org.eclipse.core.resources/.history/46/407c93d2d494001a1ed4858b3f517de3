@@ -1,0 +1,30 @@
+package com.springboot.app.items.models;
+
+import java.util.Date;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+public class Product {
+
+		private Long id;
+
+	@NotNull
+	@NotBlank
+	private String name;
+
+	@NotNull
+	private Double price;
+
+	private Date createAt;
+
+	private Date updatedAt;
+
+	private Integer port;
+}

@@ -1,0 +1,108 @@
+package com.springboot.app.items.clients;
+
+import java.awt.print.Pageable;
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+// la primera opción es indicandole la url con la que se tiene que conectar, pero con 
+// @RibbonClient no hace falta.. porque la saca de la lista de url posibles del 
+// application.properties
+// @FeignClient(name = "products-service", url = "${service.product.url}" + "/products")
+
+
+public interface GenericClientRest<T> {
+
+	@GetMapping(name = "list")
+	public Page<T> list(Pageable pageable);
+
+	@GetMapping(name = "listAll", path = "listAll")
+	public List<T> list();
+
+	@GetMapping(name = "findById", path = "{id}")
+	T getT(@PathVariable("id") Long id);
+
+	@PostMapping(name = "create")
+	T create(@Valid @RequestBody T t);
+
+	@PostMapping(name = "createBatch", path = "batch")
+	Boolean createBatch(@Valid @RequestBody List<T> listT);
+
+	@PutMapping(name = "update")
+		public ResponseEntity<?> update(@Valid @RequestBody T t, BindingResult result) throws ResourceNotFoundException {
+
+			if (result.hasErrors()) {
+				return ResponseEntity.status(HttpStatus.CONFLICT).body(result);
+			}
+			if (t.getId() == null) {
+				return ResponseEntity.status(HttpStatus.CONFLICT).body(new ErrorBody("%s necesita un Id", t));
+			}
+
+			T newT = this.genericService.save(t);
+
+			if (newT == null) {
+				return ResponseEntity.status(HttpStatus.CONFLICT).body("Error al actualizar");
+			}
+			return ResponseEntity.ok().body(newT);
+
+		}
+
+	@PutMapping(name = "updateBatch", path = "batch")
+		public ResponseEntity<?> updateBatch(@Valid @RequestBody List<T> listT, BindingResult result)
+				throws ResourceNotFoundException {
+
+			if (result.hasErrors()) {
+				return ResponseEntity.status(HttpStatus.CONFLICT).body(result);
+			}
+
+			for (T t : listT) {
+				if (t.getId() == null) {
+					return ResponseEntity.status(HttpStatus.CONFLICT)
+							.body(new ErrorBody("%s necesita un Id", t));
+				}
+			}
+
+			this.genericService.saveAll(listT);
+
+			return ResponseEntity.status(HttpStatus.CREATED).build();
+		}
+
+	@DeleteMapping(name = "delete")
+		public ResponseEntity<?> delete(@Valid @ModelAttribute T t, BindingResult result) {
+			if (result.hasErrors()) {
+				return ResponseEntity.status(HttpStatus.CONFLICT).body(result);
+			}
+
+			this.genericService.delete(t);
+			return ResponseEntity.ok().build();
+		}
+
+	@DeleteMapping(name = "deleteById", path = "{id}")
+		public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+			this.genericService.delete(id);
+			return ResponseEntity.ok().build();
+		}
+
+	@DeleteMapping(name = "deleteBatch", path = "batch")
+		public ResponseEntity<?> delete(@Valid @RequestBody List<T> listT, BindingResult result) {
+
+			if (result.hasErrors()) {
+				return ResponseEntity.status(HttpStatus.CONFLICT).body(result);
+			}
+
+			this.genericService.deleteAll(listT);
+			return ResponseEntity.ok().build();
+		}
+
+}
+
+
+}

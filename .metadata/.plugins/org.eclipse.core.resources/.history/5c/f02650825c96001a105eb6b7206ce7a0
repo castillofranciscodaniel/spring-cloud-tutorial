@@ -1,0 +1,23 @@
+package com.springboot.app.users.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.springboot.app.commons.models.Product;
+import com.springboot.app.commons.service.GenericServiceImpl;
+import com.springboot.app.users.repository.UsersRepository;
+
+@Service
+public class ProductServiceImpl extends GenericServiceImpl<Product> implements ProductService {
+
+	@SuppressWarnings("unused")
+	private UsersRepository productRepository;
+
+	@Autowired
+	public ProductServiceImpl(UsersRepository productRepository) {
+		super(productRepository);
+		this.productRepository = productRepository;
+	}
+
+
+}

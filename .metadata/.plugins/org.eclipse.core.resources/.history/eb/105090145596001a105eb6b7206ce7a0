@@ -1,0 +1,11 @@
+package com.springboot.app.users.models;
+
+import java.io.Serializable;
+
+import lombok.Data;
+
+@Data
+public class StateUser implements Serializable {
+	private static final long serialVersionUID = -3748157574756140674L;
+
+}

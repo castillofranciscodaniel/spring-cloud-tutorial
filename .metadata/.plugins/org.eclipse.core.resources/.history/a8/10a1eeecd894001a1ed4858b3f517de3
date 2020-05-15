@@ -1,0 +1,34 @@
+package com.springboot.app.items.clients;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.springboot.app.items.models.Product;
+
+// la primera opción es indicandole la url con la que se tiene que conectar, pero con 
+// @RibbonClient no hace falta.. porque la saca de la lista de url posibles del 
+// application.properties
+// @FeignClient(name = "products-service", url = "${service.product.url}" + "/products")
+
+@FeignClient(name = "products-service")
+
+public interface GenericClientRest<T> {
+
+	@GetMapping(name = "listAll", path = "listAll")
+	List<Product> list();
+	
+	@GetMapping(name = "findById", path = "{id}")
+	Product findById(@PathVariable Long id);
+
+	@PostMapping(name = "create")
+	public ResponseEntity<?> create(@Valid @RequestBody T t);
+
+}

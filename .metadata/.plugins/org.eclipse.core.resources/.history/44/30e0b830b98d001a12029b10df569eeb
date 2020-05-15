@@ -1,0 +1,7 @@
+package com.springboot.app.items.clients;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+@FeignClient(name = "products-service", url = "${enviroment.url}")
+public interface ProductClientRest {
+}

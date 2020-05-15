@@ -1,0 +1,27 @@
+package com.springboot.app.items.models.util;
+
+import lombok.Data;
+
+public class ErrorBody {
+
+	private String error;
+
+	public ErrorBody() {
+		super();
+	}
+
+	public ErrorBody(String error) {
+		super();
+		this.error = error;
+	}
+
+	public ErrorBody setError(String error) {
+		this.error = error;
+		return this;
+	}
+	
+	public String gettError() {
+		return this.message;
+	}
+
+}

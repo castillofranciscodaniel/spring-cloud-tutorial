@@ -1,0 +1,10 @@
+1588481066835	Copy compilation units
+1588483766941	Copy compilation unit
+1588484279504	Rename field 'productService'
+1588484317537	Delete element
+1588485071123	Copy compilation unit
+1588492901081	Delete element
+1588492912778	Rename type 'ProductRepositoryCustom'
+1588492926078	Rename type 'ProductRepositoryImpl'
+1588494680989	Rename local variable 'id'
+1588494691813	Rename local variable 'ProductId'

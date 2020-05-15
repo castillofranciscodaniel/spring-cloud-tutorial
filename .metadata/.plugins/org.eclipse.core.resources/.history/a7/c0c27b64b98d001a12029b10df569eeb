@@ -1,0 +1,17 @@
+package com.springboot.app.items.clients;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+import com.springboot.app.items.models.Item;
+
+@FeignClient(name = "products-service", url = "${service.product.url}")
+public interface ProductClientRest {
+
+	List<Item> findAll();
+
+	Item findByProductId(Long productId);
+
+	Item findByProductIdAndAmount(Long productId, Integer amount);
+}

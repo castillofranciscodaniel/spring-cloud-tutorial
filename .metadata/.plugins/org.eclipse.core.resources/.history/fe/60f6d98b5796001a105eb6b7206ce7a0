@@ -1,0 +1,34 @@
+package com.springboot.app.users.models;
+
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Data
+@Table(name = "users")
+public class User implements Serializable {
+	private static final long serialVersionUID = -1931625435127346213L;
+
+	@Column(unique = true, length = 20)
+	private String username;
+	
+	@Column(length = 60)
+	private String password;
+	
+	@Column(unique = true, length = 100)
+	private String email;
+	
+	private String name;
+	
+	private String lastName;
+	
+	private Boolean enabled;
+	
+	private Set<Role> roles;
+	
+	private StateUser state;
+}

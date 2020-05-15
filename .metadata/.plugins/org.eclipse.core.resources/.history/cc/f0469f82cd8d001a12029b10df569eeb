@@ -1,0 +1,19 @@
+package com.springboot.app.items.clients;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.springboot.app.items.models.Product;
+
+@FeignClient(name = "products-service", url = "${service.product.url}" + "/products")
+public interface ProductClientRest {
+
+	@GetMapping(name = "listAll", path = "listAll")
+	List<Product> listar();
+	
+	@GetMapping(name = "findById", path = "{id}")
+	Product findByIdproducto(@PathVariable Long id);
+}

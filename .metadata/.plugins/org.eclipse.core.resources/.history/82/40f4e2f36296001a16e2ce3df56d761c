@@ -1,0 +1,6 @@
+package com.springboot.app.users.service;
+
+import com.springboot.app.commons.service.GenericService;
+
+public interface UserService extends GenericService<Model> {
+}

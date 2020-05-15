@@ -1,0 +1,10 @@
+package com.springboot.app.users.service;
+
+import com.springboot.app.commons.models.Product;
+import com.springboot.app.commons.service.GenericService;
+
+public interface ProductService extends GenericService<Product> {
+
+//	Page<Product> findByName(String name, Pageable pageable);
+
+}

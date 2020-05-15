@@ -1,0 +1,13 @@
+package com.springboot.app.users.repository;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
+
+import com.springboot.app.commons.models.Product;
+
+@Repository
+public interface ProductRepositoryCustom {
+
+	Page<Product> findByNameQuery(String name, Pageable pageable);
+}

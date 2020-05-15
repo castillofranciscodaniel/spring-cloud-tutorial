@@ -1,0 +1,8 @@
+package com.springboot.app.users.models;
+
+import lombok.Data;
+
+@Data
+public class User {
+
+}

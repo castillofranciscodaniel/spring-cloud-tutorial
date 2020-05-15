@@ -1,0 +1,27 @@
+package com.springboot.app.items.models.util;
+
+import org.springframework.stereotype.Component;
+
+import lombok.Data;
+
+@Data
+@Component
+public class OkBody {
+
+	private String message;
+
+	public OkBody() {
+		super();
+	}
+
+	public OkBody(String error) {
+		super();
+		this.message = error;
+	}
+
+	public OkBody setError(String error) {
+		this.message = error;
+		return this;
+	}
+
+}

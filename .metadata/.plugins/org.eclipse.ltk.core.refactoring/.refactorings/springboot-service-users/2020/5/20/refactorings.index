@@ -1,0 +1,24 @@
+1589508493776	Delete element
+1589508527001	Copy compilation unit
+1589508541520	Copy compilation unit
+1589513189764	Rename package 'com.springboot.app.products.service'
+1589513194261	Rename package 'com.springboot.app.products.repository'
+1589513197849	Rename package 'com.springboot.app.products.controller'
+1589513220289	Rename type 'ProductRepository'
+1589513225265	Rename type 'ProductRepositoryCustom'
+1589513227617	Delete element
+1589513233228	Rename type 'ProductRepositoryImpl'
+1589513275525	Delete element
+1589513278381	Delete element
+1589513280110	Delete element
+1589513922258	Delete element
+1589513937327	Rename type 'ProductServiceImpl'
+1589514006926	Rename type 'ProductService'
+1589514027339	Delete element
+1589514036240	Rename type 'ProductController'
+1589514093368	Rename field 'productService'
+1589514101085	Rename local variable 'productService'
+1589514118754	Rename field 'productRepository'
+1589514126366	Rename local variable 'productRepository'
+1589517352405	Rename type 'User'
+1589517381021	Rename type 'Usercito'

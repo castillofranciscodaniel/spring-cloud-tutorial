@@ -1,0 +1,23 @@
+
+spring.application.name=items-service
+server.port=8002
+
+
+# service.product.url=http://localhost:8001/
+
+# Ta no hace falta listarle a ribbon la lista de servidores porque las IP y PUERTO se guardan en el
+# Registro de eureka, cada microservicio registra esto en el servidor y se guarda en forma automática
+# No se necesita configurar, solo se encuentran mediante el nombre del microservicio
+# products-service.ribbon.listOfServers=http://localhost:8001,http://localhost:9001
+
+# Esto es obligatorio cuando estan en diferentes servidores --> se le envía una señal al servidor de eureka
+# Que se conoce como latido de corazón
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+
+# Configuraciones de timeOut...  
+# hystrix necesita siempre esperar a que ribbon este listo, por lo tanto el tiempo de espera de hystrix siempre
+# tiene que ser mayor a la suma de connect mer el read de ribbon
+
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 20000
+#ribbon.ConnectTimeout: 3000
+#ribbon.ReadTimeout: 10000
