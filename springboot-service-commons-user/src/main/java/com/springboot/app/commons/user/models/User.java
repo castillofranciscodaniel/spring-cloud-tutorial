@@ -12,8 +12,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import com.springboot.app.commons.models.util.DateAudit;
-
 import lombok.Getter;
 import lombok.Setter;
 
