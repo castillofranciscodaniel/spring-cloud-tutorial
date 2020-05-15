@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.springboot.app.commons.models.Model;
 import com.springboot.app.commons.models.util.ErrorBody;
-import com.springboot.app.commons.service.GenericService;
 import com.springboot.app.commons.service.ResourceNotFoundException;
-import com.springboot.app.users.models.Model;
+import com.springboot.app.users.service.GenericService;
 
 public abstract class GenericController<T extends Model> {
 

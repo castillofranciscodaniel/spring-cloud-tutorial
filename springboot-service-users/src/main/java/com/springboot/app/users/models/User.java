@@ -1,21 +1,18 @@
 package com.springboot.app.users.models;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.springboot.app.commons.models.util.DateAudit;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @Table(name = "users")
 @Entity
 public class User extends DateAudit implements Serializable {
@@ -37,12 +34,12 @@ public class User extends DateAudit implements Serializable {
 	
 	private Boolean enabled;
 
-	@ManyToMany
-	// @JoinTable(uniqueConstraints = @UniqueConstraint(columnNames = { "user_id",
-	// "roles_id" }))
-	private Set<Role> roles;
-
-	@OneToOne
-	private StateUser state;
+//	@ManyToMany
+//	// @JoinTable(uniqueConstraints = @UniqueConstraint(columnNames = { "user_id",
+//	// "roles_id" }))
+//	private Set<Role> roles;
+//
+//	@OneToOne
+//	private StateUser state;
 
 }

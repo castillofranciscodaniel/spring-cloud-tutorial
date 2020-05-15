@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.springboot.app.commons.models.Model;
-import com.springboot.app.commons.service.GenericService;
 import com.springboot.app.commons.service.ResourceNotFoundException;
 
 public abstract class GenericServiceImpl<T extends Model> implements GenericService<T> {
