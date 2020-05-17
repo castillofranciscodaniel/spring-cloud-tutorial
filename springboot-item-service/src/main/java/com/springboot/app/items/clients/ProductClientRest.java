@@ -2,6 +2,7 @@ package com.springboot.app.items.clients;
 
 import org.springframework.cloud.openfeign.FeignClient;
 
+import com.springboot.app.commons.clients.GenericClientRest;
 import com.springboot.app.commons.models.Product;
 
 // la primera opción es indicandole la url con la que se tiene que conectar, pero con 
