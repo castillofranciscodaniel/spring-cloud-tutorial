@@ -1,8 +1,0 @@
-package com.springboot.app.items.models.util;
-
-public class Snippet {
-	public static void main(String[] args) {
-		this.texto
-	}
-}
-

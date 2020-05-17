@@ -1,9 +1,0 @@
-package com.springboot.app.items.models.util;
-
-public class Snippet {
-	public static void main(String[] args) {
-		log.info(String.format("Tiempo transcurrido en segundos: ", elapsedTime.doubleValue() / 1000.00));
-		
-	}
-}
-

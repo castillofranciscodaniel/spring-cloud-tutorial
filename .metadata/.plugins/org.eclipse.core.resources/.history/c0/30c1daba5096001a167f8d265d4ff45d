@@ -1,6 +1,0 @@
-package com.springboot.app.users.models;
-
-
-public class User {
-
-}
