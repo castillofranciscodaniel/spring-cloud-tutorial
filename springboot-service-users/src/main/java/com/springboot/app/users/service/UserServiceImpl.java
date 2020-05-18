@@ -11,13 +11,17 @@ import com.springboot.app.users.repository.UsersRepository;
 public class UserServiceImpl extends GenericServiceImpl<User>
 		implements UserService {
 
-	@SuppressWarnings("unused")
 	private UsersRepository userRepository;
 
 	@Autowired
 	public UserServiceImpl(UsersRepository userRepository) {
 		super(userRepository);
 		this.userRepository = userRepository;
+	}
+
+	@Override
+	public User findByUsernameLike(String username) {
+		return this.userRepository.findByUsernameLike(username);
 	}
 
 

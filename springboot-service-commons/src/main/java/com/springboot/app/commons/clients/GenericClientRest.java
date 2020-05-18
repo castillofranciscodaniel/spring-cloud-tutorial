@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface GenericClientRest<T> {
 
 	@GetMapping(name = "list")
-	public Page<T> list(Pageable pageable);
+	Page<T> list(Pageable pageable);
 
 	@GetMapping(name = "listAll", path = "listAll")
-	public List<T> list();
+	List<T> list();
 
 	@GetMapping(name = "findById", path = "{id}")
 	T findById(@PathVariable("id") Long id);

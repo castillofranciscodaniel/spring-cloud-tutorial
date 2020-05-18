@@ -11,6 +11,5 @@ import com.springboot.app.commons.models.Product;
 // @FeignClient(name = "products-service", url = "${service.product.url}" + "/products")
 
 @FeignClient(name = "products-service")
-
 public interface ProductClientRest extends GenericClientRest<Product> {
 }
