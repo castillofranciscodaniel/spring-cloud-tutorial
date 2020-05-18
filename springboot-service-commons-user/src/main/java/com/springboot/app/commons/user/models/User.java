@@ -34,6 +34,8 @@ public class User extends DateAudit implements Serializable {
 	@Column(unique = true, length = 100)
 	private String mail;
 	
+	private Integer dni;
+
 	private String name;
 	
 	private String lastName;
@@ -47,5 +49,6 @@ public class User extends DateAudit implements Serializable {
 
 	@OneToOne
 	private StateUser state;
+
 
 }
