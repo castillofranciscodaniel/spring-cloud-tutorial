@@ -40,7 +40,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	 * @endpoints ruta relacionada al POST para hacer login.
 	 */
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-		endpoints.authenticationManager(authenticationManager).accessTokenConverter(this.accessTokenConverter());
+		endpoints.authenticationManager(this.authenticationManager).tokenStore(this.jwtTokenStore())
+				.accessTokenConverter(this.accessTokenConverter());
 	}
 
 	@Bean
@@ -50,8 +51,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Bean
 	public JwtAccessTokenConverter accessTokenConverter() {
-		JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
-		jwtAccessTokenConverter.setSigningKey("algun_codigo_secreto");
+		JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
+		tokenConverter.setSigningKey("algun_codigo_secreto");
 		return new JwtAccessTokenConverter();
 	}
 

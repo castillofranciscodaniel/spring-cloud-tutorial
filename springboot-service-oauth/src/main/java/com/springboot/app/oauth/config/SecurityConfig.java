@@ -6,15 +6,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import com.springboot.app.oauth.service.CustomUserDetailsService;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private CustomUserDetailsService customUserDetailsService;
+	private UserDetailsService customUserDetailsService;
 
 //	@Autowired
 //	private JwtAuthenticationEntryPoint unauthorizedHandler;
@@ -24,22 +23,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		return new JwtAuthenticationFilter();
 //	}
 
-	@Override
-	public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-		authenticationManagerBuilder.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
-	}
-
-	@Bean
-	@Override
-	public AuthenticationManager authenticationManager() throws Exception {
-		return super.authenticationManagerBean();
-	}
-
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
+	@Override
+	@Autowired
+	public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+		authenticationManagerBuilder.userDetailsService(this.customUserDetailsService)
+				.passwordEncoder(passwordEncoder());
+	}
+
+	@Bean
+	@Override
+	public AuthenticationManager authenticationManager() throws Exception {
+		return super.authenticationManager();
+	}
 //	@Override
 //	protected void configure(HttpSecurity http) throws Exception {
 //		http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()

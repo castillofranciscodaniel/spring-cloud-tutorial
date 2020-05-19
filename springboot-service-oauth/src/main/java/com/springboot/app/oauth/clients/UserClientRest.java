@@ -10,7 +10,7 @@ import com.springboot.app.commons.user.models.User;
 @FeignClient(name = "users-service")
 public interface UserClientRest extends GenericClientRest<User> {
 
-	@GetMapping(params = "find=ByUsernameLike")
-	public User findByUsernameLike(@RequestParam String username);
+	@GetMapping
+	public User findByUsernameLike(@RequestParam String find, @RequestParam String username);
 
 }
