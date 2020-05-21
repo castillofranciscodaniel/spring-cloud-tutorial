@@ -3,8 +3,10 @@ package com.springboot.app.oauth.config;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -18,6 +20,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 import com.springboot.app.oauth.models.TokenAditionalInfo;
 
+@RefreshScope
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
@@ -30,6 +33,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Autowired
 	private TokenAditionalInfo tokenAditionalInfo;
+	
+	@Autowired
+	private Environment env;
 
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
@@ -38,7 +44,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient("frontendapp").secret(passwordEncoder.encode("12345")).scopes("read", "write")
+		clients.inMemory()
+				.withClient(this.env.getProperty("config.security.oauth.client.id"))
+				.secret(passwordEncoder.encode(this.env.getProperty("config.security.oauth.client.secret")))
+				.scopes("read", "write")
 				.authorizedGrantTypes("password", "refresh_token").accessTokenValiditySeconds(3600)
 				.refreshTokenValiditySeconds(3600);
 	}
@@ -63,7 +72,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Bean
 	public JwtAccessTokenConverter accessTokenConverter() {
 		JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
-		tokenConverter.setSigningKey("algun_codigo_secreto");
+		tokenConverter.setSigningKey(this.env.getProperty("config.security.oauth.jwt.key"));
 		return tokenConverter;
 	}
 
