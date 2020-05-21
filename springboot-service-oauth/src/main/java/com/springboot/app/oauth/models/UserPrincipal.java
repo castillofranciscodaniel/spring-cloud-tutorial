@@ -62,17 +62,17 @@ public class UserPrincipal implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return lastName;
+		return this.username;
 	}
 
 	@Override
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return authorities;
+		return this.authorities;
 	}
 
 	@Override
