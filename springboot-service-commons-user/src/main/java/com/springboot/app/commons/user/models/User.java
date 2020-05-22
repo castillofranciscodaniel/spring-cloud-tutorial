@@ -27,28 +27,47 @@ public class User extends DateAudit implements Serializable {
 
 	@Column(unique = true, length = 20)
 	private String username;
-	
+
 	@Column(length = 60)
 	private String password;
-	
+
 	@Column(unique = true, length = 100)
 	private String mail;
-	
+
 	private Integer dni;
 
 	private String name;
-	
+
 	private String lastName;
-	
+
 	private Boolean enabled;
 
+	private Integer loginTry;
+
 	@ManyToMany
-	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"), 
-	uniqueConstraints = @UniqueConstraint(columnNames = { "user_id", "role_id" }))
+	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"), uniqueConstraints = @UniqueConstraint(columnNames = {
+			"user_id", "role_id" }))
 	private Set<Role> roles;
 
 	@OneToOne
 	private StateUser state;
 
+	public User resetLoginTry() {
+		this.setLoginTry(0);
+		this.enabled = true;
+		return this;
+	}
+
+	public User addLoginTry() {
+		if (this.loginTry == null) {
+			this.resetLoginTry();
+		} else {
+			this.loginTry++;
+			if(this.loginTry > 2) {
+				this.enabled = false;
+			}	
+		}
+		return this;
+	}
 
 }

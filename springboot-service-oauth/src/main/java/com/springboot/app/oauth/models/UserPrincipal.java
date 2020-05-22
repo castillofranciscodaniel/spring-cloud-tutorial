@@ -35,11 +35,13 @@ public class UserPrincipal implements UserDetails {
 	private String lastName;
 
 	private Boolean enabled;
+	
+	private Integer loginTry;
 
 	private Collection<? extends GrantedAuthority> authorities;
 
 	public UserPrincipal(Long id, String username, String password, String mail, Integer dni, String name,
-			String lastName, Boolean enabled, Collection<? extends GrantedAuthority> authorities) {
+			String lastName, Boolean enabled, Integer loginTry, Collection<? extends GrantedAuthority> authorities) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -49,6 +51,7 @@ public class UserPrincipal implements UserDetails {
 		this.name = name;
 		this.lastName = lastName;
 		this.enabled = enabled;
+		this.loginTry = loginTry;
 		this.authorities = authorities;
 	}
 
@@ -57,7 +60,7 @@ public class UserPrincipal implements UserDetails {
 				.map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
 
 		return new UserPrincipal(user.getId(), user.getUsername(), user.getPassword(), user.getMail(), user.getDni(),
-				user.getName(), user.getLastName(), user.getEnabled(), authorities);
+				user.getName(), user.getLastName(), user.getEnabled(), user.getLoginTry(), authorities);
 	}
 
 	@Override
@@ -86,7 +89,7 @@ public class UserPrincipal implements UserDetails {
 	}
 
 	@Override
-	public boolean isCredentialsNonExpired() {
+	public boolean isCredentialsNonExpired() { 
 		return true;
 	}
 

@@ -36,11 +36,9 @@ public class CustomUserDetailsService implements UserDetailsService, IUserServic
 		return this.userClientRest.findByUsernameLike("ByUsernameLike", username);
 	}
 
-	// This method is used by JWTAuthenticationFilter
-//	@Transactional
-//	public UserDetails loadUserById(Long id) {
-//		User user = this.userClientRest.findById(id);
-//		return UserPrincipal.create(user);
-//	}
+	@Override
+	public User update(User user) {
+		return this.userClientRest.update(user);
+	}
 
 }
