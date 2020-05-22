@@ -10,6 +10,7 @@ import com.springboot.app.commons.user.models.User;
 import com.springboot.app.oauth.clients.UserClientRest;
 import com.springboot.app.oauth.models.UserPrincipal;
 
+import feign.FeignException;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -21,14 +22,20 @@ public class CustomUserDetailsService implements UserDetailsService, IUserServic
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = this.userClientRest.findByUsernameLike("ByUsernameLike", username);
+		try {
+			User user = this.userClientRest.findByUsernameLike("ByUsernameLike", username);
+			if(user == null) {
+				log.error("Error de login, no existe usuario: {}", username);
+				throw new UsernameNotFoundException(String.format("Error de login, no existe usuario: %s", username));
+			} else {
 
-		if (user == null) {
+				log.info("User Autenticated: {}", username);
+				return UserPrincipal.create(user);
+			}
+		} catch (FeignException e) {
 			log.error("Error de login, no existe usuario: {}", username);
 			throw new UsernameNotFoundException(String.format("Error de login, no existe usuario: %s", username));
 		}
-		log.info("User Autenticated: {}", username);
-		return UserPrincipal.create(user);
 	}
 
 	@Override

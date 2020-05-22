@@ -44,10 +44,9 @@ public abstract class GenericController<T extends Model> {
 	public ResponseEntity<?> findById(@PathVariable("id") Long id) throws Exception {
 		T t = this.genericService.findById(id);
 		if (t == null) {
-			return ResponseEntity.status(HttpStatus.CONFLICT)
-					.body(new ErrorBody("Id: %s no encontrado", id));
+			return ResponseEntity.notFound().build();
 		}
-		return ResponseEntity.status(200).body(t);
+		return ResponseEntity.ok(t);
 	}
 
 	@PostMapping(name = "create")
