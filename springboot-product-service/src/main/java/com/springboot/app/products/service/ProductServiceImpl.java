@@ -8,13 +8,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.springboot.app.commons.models.Product;
 import com.springboot.app.commons.service.GenericServiceImpl;
+import com.springboot.app.products.models.Product;
 import com.springboot.app.products.repository.ProductRepository;
 import com.springboot.app.products.repository.ProductSpecification;
 
 @Service
-public class ProductServiceImpl extends GenericServiceImpl<Product> implements ProductService {
+public class ProductServiceImpl extends GenericServiceImpl<Product, Long> implements ProductService {
 
 	private ProductRepository productRepository;
 

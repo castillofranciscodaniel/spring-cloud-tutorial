@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.springboot.app.commons.audit.entity.models.Model;
+import com.springboot.app.commons.audit.entity.models.ModelSql;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +15,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "states_user")
-public class StateUser extends Model implements Serializable
+public class StateUser extends ModelSql<Long> implements Serializable
 {
 
 	private static final long serialVersionUID = -3748157574756140674L;

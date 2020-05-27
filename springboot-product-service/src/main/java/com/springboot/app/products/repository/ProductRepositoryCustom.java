@@ -4,7 +4,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
-import com.springboot.app.commons.models.Product;
+import com.springboot.app.products.models.Product;
+
 
 @Repository
 public interface ProductRepositoryCustom {

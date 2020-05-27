@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.springboot.app.commons.models.Product;
 import com.springboot.app.items.models.Item;
+import com.springboot.app.items.models.Product;
 import com.springboot.app.items.models.util.ErrorBody;
 import com.springboot.app.items.service.ItemService;
 import com.springboot.app.items.service.ResourceNotFoundException;

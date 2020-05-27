@@ -2,7 +2,8 @@ package com.springboot.app.products.repository;
 
 import org.springframework.data.jpa.domain.Specification;
 
-import com.springboot.app.commons.models.Product;
+import com.springboot.app.products.models.Product;
+
 
 public class ProductSpecification {
 

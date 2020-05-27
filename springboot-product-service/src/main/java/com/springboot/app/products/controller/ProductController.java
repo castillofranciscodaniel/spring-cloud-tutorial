@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.app.commons.controller.GenericController;
-import com.springboot.app.commons.models.Product;
 import com.springboot.app.commons.models.util.ErrorBody;
+import com.springboot.app.products.models.Product;
 import com.springboot.app.products.service.ProductService;
 
 @RestController
 @RequestMapping(value = "", name = "productController", produces = MediaType.APPLICATION_JSON_VALUE)
-public class ProductController extends GenericController<Product> {
+public class ProductController extends GenericController<Product, Long> {
 
 	private ProductService productService;
 

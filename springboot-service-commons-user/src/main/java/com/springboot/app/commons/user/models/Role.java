@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.springboot.app.commons.audit.entity.models.Model;
+import com.springboot.app.commons.audit.entity.models.ModelSql;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +15,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "roles")
-public class Role extends Model implements Serializable {
+public class Role extends ModelSql<Long> implements Serializable {
 
 	private static final long serialVersionUID = -5840653378609792375L;
 

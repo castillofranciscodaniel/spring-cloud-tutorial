@@ -8,7 +8,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.springboot.app.products.models.util.DateAudit;
+import com.springboot.app.commons.audit.entity.models.ModelSql;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +17,7 @@ import lombok.Setter;
 @Table(name = "products")
 @Getter
 @Setter
-public class Product extends DateAudit implements Serializable {
+public class Product extends ModelSql<Long> implements Serializable {
 
 	private static final long serialVersionUID = -3568706430523675600L;
 

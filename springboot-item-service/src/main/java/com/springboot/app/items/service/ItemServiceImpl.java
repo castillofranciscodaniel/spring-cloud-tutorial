@@ -12,8 +12,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.springboot.app.commons.models.Product;
 import com.springboot.app.items.models.Item;
+import com.springboot.app.items.models.Product;
 
 import lombok.RequiredArgsConstructor;
 

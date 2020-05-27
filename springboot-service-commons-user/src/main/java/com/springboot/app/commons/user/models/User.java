@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import com.springboot.app.commons.audit.entity.models.DateAudit;
+import com.springboot.app.commons.audit.entity.models.DateAuditSql;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +21,7 @@ import lombok.Setter;
 @Setter
 @Table(name = "users")
 @Entity
-public class User extends DateAudit implements Serializable {
+public class User extends DateAuditSql<Long> implements Serializable {
 
 	private static final long serialVersionUID = -1931625435127346213L;
 
@@ -44,9 +44,6 @@ public class User extends DateAudit implements Serializable {
 
 	private Integer loginTry;
 
-	@ManyToMany
-	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"), uniqueConstraints = @UniqueConstraint(columnNames = {
-			"user_id", "role_id" }))
 	private Set<Role> roles;
 
 	@OneToOne
@@ -63,11 +60,18 @@ public class User extends DateAudit implements Serializable {
 			this.resetLoginTry();
 		} else {
 			this.loginTry++;
-			if(this.loginTry > 2) {
+			if (this.loginTry > 2) {
 				this.enabled = false;
-			}	
+			}
 		}
 		return this;
+	}
+
+	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"), 
+			uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "role_id" }))
+	@ManyToMany
+	public Set<Role> getRoles() {
+		return this.roles;
 	}
 
 }

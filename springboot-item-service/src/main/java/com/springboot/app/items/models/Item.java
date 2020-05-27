@@ -1,6 +1,5 @@
 package com.springboot.app.items.models;
 
-import com.springboot.app.commons.models.Product;
 
 import lombok.Getter;
 import lombok.Setter;

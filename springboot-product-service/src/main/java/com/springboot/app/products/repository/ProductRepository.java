@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.springboot.app.commons.models.Product;
+import com.springboot.app.products.models.Product;
 
 /**
  * 

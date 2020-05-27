@@ -3,7 +3,7 @@ package com.springboot.app.items.clients;
 import org.springframework.cloud.openfeign.FeignClient;
 
 import com.springboot.app.commons.clients.GenericClientRest;
-import com.springboot.app.commons.models.Product;
+import com.springboot.app.items.models.Product;
 
 // la primera opción es indicandole la url con la que se tiene que conectar, pero con 
 // @RibbonClient no hace falta.. porque la saca de la lista de url posibles del 
